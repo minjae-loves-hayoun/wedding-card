@@ -178,7 +178,6 @@ body {
 /* ─── Invite ─────────────────────────────────────────────────────────────── */
 .invite-deco {
   display: inline-block;
-  font-size: 20px;
   color: var(--color-point);
   margin: 8px 0;
   animation: heartbeat 2.4s ease-in-out infinite;
