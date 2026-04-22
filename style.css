@@ -8,6 +8,7 @@
   --color-border: #e8d8d0;
   --font-ko: 'Noto Serif KR', serif;
   --font-en: 'Cormorant Garamond', serif;
+  --font-script: 'Great Vibes', cursive;
   --max-width: 480px;
 }
 
@@ -102,10 +103,9 @@ body {
 }
 
 .hero-names {
-  font-family: var(--font-en);
-  font-size: 42px;
+  font-family: var(--font-script);
+  font-size: 48px;
   font-weight: 400;
-  font-style: italic;
   color: var(--color-text);
   line-height: 1.2;
   margin-bottom: 16px;
@@ -113,9 +113,8 @@ body {
 
 .hero-names .amp {
   display: block;
-  font-size: 28px;
   color: var(--color-point);
-  margin: 4px 0;
+  margin: 14px 0;
 }
 
 .hero-venue {
