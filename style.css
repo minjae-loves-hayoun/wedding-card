@@ -462,7 +462,30 @@ body {
 .transport-item p {
   font-size: 13px;
   color: var(--color-text);
-  line-height: 1.8;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.transport-item p:last-child {
+  margin-bottom: 0;
+}
+
+.transport-sub {
+  color: var(--color-sub) !important;
+  font-size: 12px !important;
+  margin-bottom: 8px !important;
+}
+
+.transport-tag {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--color-sub);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 0 5px;
+  margin-right: 2px;
+  vertical-align: middle;
+  line-height: 1.6;
 }
 
 .transport-title {
