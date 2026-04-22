@@ -491,12 +491,12 @@ body {
 .transport-title {
   display: flex;
   align-items: center;
-  gap: 7px;
-  font-size: 14px;
+  gap: 8px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--color-text);
-  margin-bottom: 8px !important;
-  padding-bottom: 6px;
+  margin-bottom: 10px !important;
+  padding-bottom: 8px;
   border-bottom: 1px solid var(--color-border);
 }
 
