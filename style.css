@@ -113,8 +113,9 @@ body {
 
 .hero-names .amp {
   display: block;
+  font-size: 28px;
   color: var(--color-point);
-  margin: 14px 0;
+  margin: 4px 0;
 }
 
 .hero-venue {
