@@ -101,6 +101,10 @@ body {
   margin-bottom: 12px;
 }
 
+.hero-date-label .ko {
+  font-family: var(--font-ko);
+}
+
 .hero-names {
   font-family: var(--font-script);
   font-size: 48px;
