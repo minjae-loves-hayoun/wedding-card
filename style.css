@@ -329,7 +329,7 @@ body {
 
 .account-info {
   overflow: hidden;
-  max-height: 200px;
+  max-height: 500px;
   opacity: 1;
   margin-top: 16px;
   padding: 20px;
@@ -375,6 +375,14 @@ body {
 }
 
 .copy-btn:hover { border-color: var(--color-point); color: var(--color-point); }
+
+.account-sep {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 14px 0;
+}
+
+.account-row { text-align: center; }
 
 /* ─── Location ───────────────────────────────────────────────────────────── */
 .map-wrap {

@@ -101,9 +101,23 @@
       <button class="copy-btn" onclick="copyAccount('groom')">복사</button>
     </div>
     <div id="account-bride" class="account-info hidden">
-      <p class="account-name" id="bride-name"></p>
-      <p class="account-number" id="bride-number"></p>
-      <button class="copy-btn" onclick="copyAccount('bride')">복사</button>
+      <div class="account-row">
+        <p class="account-name" id="bride-name"></p>
+        <p class="account-number" id="bride-number"></p>
+        <button class="copy-btn" onclick="copyAccount('bride')">복사</button>
+      </div>
+      <hr class="account-sep">
+      <div class="account-row">
+        <p class="account-name" id="bride-parent1-name"></p>
+        <p class="account-number" id="bride-parent1-number"></p>
+        <button class="copy-btn" onclick="copyAccount('bride-parent1')">복사</button>
+      </div>
+      <hr class="account-sep">
+      <div class="account-row">
+        <p class="account-name" id="bride-parent2-name"></p>
+        <p class="account-number" id="bride-parent2-number"></p>
+        <button class="copy-btn" onclick="copyAccount('bride-parent2')">복사</button>
+      </div>
     </div>
   </section>
 
