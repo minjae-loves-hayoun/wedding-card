@@ -47,8 +47,8 @@ initGallery();
 const ACCOUNTS = {
   groom: [
     { bank: '우리은행', person: '정민재', number: '1002-747-804723' },
-    { bank: '국민은행', person: '최향지', number: '93710101403763' },
-    { bank: '국민은행', person: '정귀석', number: '93710101403763' },
+    { bank: '국민은행', person: '최향지', number: '937101-01-403763' },
+    { bank: '국민은행', person: '정귀석', number: '937101-01-403763' },
   ],
   bride: [
     { bank: '신한은행', person: '김하윤', number: '110-440-092401' },
