@@ -95,9 +95,9 @@ body {
 }
 
 .hero-date-label {
-  font-family: 'Pinyon Script', cursive;
-  font-size: 22px;
-  letter-spacing: 2px;
+  font-family: var(--font-en);
+  font-size: 15px;
+  letter-spacing: 4px;
   color: var(--color-sub);
   margin-bottom: 12px;
 }
