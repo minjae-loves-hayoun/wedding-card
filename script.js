@@ -121,9 +121,21 @@ function autoPlayBgm() {
   }).catch(() => {});
 }
 
-document.addEventListener('click', autoPlayBgm);
-document.addEventListener('touchstart', autoPlayBgm);
-document.addEventListener('scroll', autoPlayBgm, { passive: true });
+// 페이지 로드 시 자동재생 시도 (브라우저가 허용하면 즉시 재생)
+window.addEventListener('load', function() {
+  const audio = document.getElementById('bgm');
+  if (!audio) return;
+  audio.play().then(() => {
+    autoPlayDone = true;
+    removeAutoPlayListeners();
+    setBgmState(true);
+  }).catch(() => {
+    // 브라우저가 차단한 경우 첫 인터랙션 시 재생
+    document.addEventListener('click', autoPlayBgm);
+    document.addEventListener('touchstart', autoPlayBgm);
+    document.addEventListener('scroll', autoPlayBgm, { passive: true });
+  });
+});
 
 // ─── Kakao Map ───────────────────────────────────────────────────────────────
 const VENUE_LAT = 37.4279;
