@@ -346,6 +346,13 @@ body {
   border-color: transparent;
 }
 
+.account-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--color-sub);
+  margin-bottom: 12px;
+}
+
 .account-name {
   font-size: 14px;
   color: var(--color-text);
