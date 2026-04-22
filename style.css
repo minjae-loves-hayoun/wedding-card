@@ -94,15 +94,11 @@ body {
 }
 
 .hero-date-label {
-  font-family: 'Caveat', cursive;
+  font-family: var(--font-ko);
   font-size: 15px;
   letter-spacing: 4px;
   color: var(--color-sub);
   margin-bottom: 12px;
-}
-
-.hero-date-label .ko {
-  font-family: var(--font-ko);
 }
 
 .hero-names {
