@@ -96,9 +96,17 @@
       <button class="account-btn" onclick="toggleAccount('bride')">신부측 계좌번호</button>
     </div>
     <div id="account-groom" class="account-info hidden">
-      <p class="account-name" id="groom-name"></p>
-      <p class="account-number" id="groom-number"></p>
-      <button class="copy-btn" onclick="copyAccount('groom')">복사</button>
+      <div class="account-row">
+        <p class="account-name" id="groom-name"></p>
+        <p class="account-number" id="groom-number"></p>
+        <button class="copy-btn" onclick="copyAccount('groom')">복사</button>
+      </div>
+      <hr class="account-sep">
+      <div class="account-row">
+        <p class="account-name" id="groom-parent1-name"></p>
+        <p class="account-number" id="groom-parent1-number"></p>
+        <button class="copy-btn" onclick="copyAccount('groom-parent1')">복사</button>
+      </div>
     </div>
     <div id="account-bride" class="account-info hidden">
       <div class="account-row">

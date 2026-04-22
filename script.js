@@ -46,8 +46,9 @@ initGallery();
 // ─── Account Toggle & Clipboard ──────────────────────────────────────────────
 // 계좌번호 확정 시 여기만 수정
 const ACCOUNTS = {
-  groom:         { name: '우리은행  정민재', number: '1002-747-804723' },
-  bride:         { name: '신한은행  김하윤', number: '110-440-092401' },
+  groom:           { name: '우리은행  정민재', number: '1002-747-804723' },
+  'groom-parent1': { name: '국민은행  최향지', number: '93710101403763' },
+  bride:           { name: '신한은행  김하윤', number: '110-440-092401' },
   'bride-parent1': { name: '하나은행  김수만', number: '184-18-277544' },
   'bride-parent2': { name: '광주은행  김안숙', number: '420-107-067637' },
 };
@@ -55,6 +56,8 @@ const ACCOUNTS = {
 function initAccounts() {
   document.getElementById('groom-name').textContent = ACCOUNTS.groom.name;
   document.getElementById('groom-number').textContent = ACCOUNTS.groom.number;
+  document.getElementById('groom-parent1-name').textContent = ACCOUNTS['groom-parent1'].name;
+  document.getElementById('groom-parent1-number').textContent = ACCOUNTS['groom-parent1'].number;
   document.getElementById('bride-name').textContent = ACCOUNTS.bride.name;
   document.getElementById('bride-number').textContent = ACCOUNTS.bride.number;
   document.getElementById('bride-parent1-name').textContent = ACCOUNTS['bride-parent1'].name;
