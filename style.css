@@ -354,6 +354,11 @@ body {
 .gallery-dot.active { background: var(--color-point); }
 
 /* ─── Account ────────────────────────────────────────────────────────────── */
+.section-account {
+  background: #fff;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
 .account-buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
