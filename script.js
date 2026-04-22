@@ -131,24 +131,29 @@ function initKakaoMap() {
   const container = document.getElementById('kakaoMap');
   if (!container) return;
 
-  const coords = new kakao.maps.LatLng(37.42788, 126.80011);
-  const map = new kakao.maps.Map(container, { center: coords, level: 4 });
-
-  const marker = new kakao.maps.Marker({ position: coords });
-  marker.setMap(map);
-
-  const infowindow = new kakao.maps.InfoWindow({
-    content: '<div style="padding:6px 10px;font-size:13px;white-space:nowrap;">광명역사컨벤션웨딩홀</div>'
+  const map = new kakao.maps.Map(container, {
+    center: new kakao.maps.LatLng(37.4279, 126.7999),
+    level: 4
   });
-  infowindow.open(map, marker);
+
+  // Places 검색으로 정확한 위치에 마커 표시
+  const ps = new kakao.maps.services.Places();
+  ps.keywordSearch('광명역사컨벤션웨딩홀', function(data, status) {
+    if (status === kakao.maps.services.Status.OK && data.length > 0) {
+      const place = data[0];
+      const coords = new kakao.maps.LatLng(place.y, place.x);
+      map.setCenter(coords);
+
+      const marker = new kakao.maps.Marker({ position: coords, map });
+      const infowindow = new kakao.maps.InfoWindow({
+        content: '<div style="padding:6px 10px;font-size:13px;white-space:nowrap;">광명역사컨벤션웨딩홀</div>'
+      });
+      infowindow.open(map, marker);
+    }
+  });
 }
 
-// 카카오맵 SDK 로드 후 초기화
-if (typeof kakao !== 'undefined') {
-  initKakaoMap();
-} else {
-  window.addEventListener('load', initKakaoMap);
-}
+window.addEventListener('load', initKakaoMap);
 
 // ─── Scroll Reveal ───────────────────────────────────────────────────────────
 function initReveal() {
