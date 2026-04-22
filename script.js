@@ -59,7 +59,10 @@ function initAccounts() {
 
 function toggleAccount(side) {
   const el = document.getElementById(`account-${side}`);
-  el.classList.toggle('hidden');
+  const other = document.getElementById(`account-${side === 'groom' ? 'bride' : 'groom'}`);
+  const isHidden = el.classList.contains('hidden');
+  el.classList.toggle('hidden', !isHidden);
+  if (!other.classList.contains('hidden')) other.classList.add('hidden');
 }
 
 function copyAccount(side) {
