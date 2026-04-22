@@ -126,13 +126,16 @@ document.addEventListener('touchstart', autoPlayBgm);
 document.addEventListener('scroll', autoPlayBgm, { passive: true });
 
 // ─── Kakao Map ───────────────────────────────────────────────────────────────
+const VENUE_LAT = 37.4279;
+const VENUE_LNG = 126.7999;
+
 function initKakaoMap() {
   try {
     const container = document.getElementById('kakaoMap');
     if (!container) return;
 
     const map = new kakao.maps.Map(container, {
-      center: new kakao.maps.LatLng(37.4279, 126.7999),
+      center: new kakao.maps.LatLng(VENUE_LAT, VENUE_LNG),
       level: 4
     });
 
@@ -153,6 +156,17 @@ function initKakaoMap() {
 window.addEventListener('load', function() {
   if (typeof kakao !== 'undefined') {
     kakao.maps.load(initKakaoMap);
+  }
+
+  // 티맵 딥링크: 모바일이면 앱으로, 아니면 웹으로
+  const tmapLink = document.getElementById('tmapLink');
+  if (tmapLink) {
+    const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      tmapLink.href = `tmap://route?goalname=광명역사컨벤션웨딩홀&goalx=${VENUE_LNG}&goaly=${VENUE_LAT}`;
+    } else {
+      tmapLink.href = `https://www.tmap.co.kr/tmap2/mobile/route.do?goalName=광명역사컨벤션웨딩홀&goalLon=${VENUE_LNG}&goalLat=${VENUE_LAT}`;
+    }
   }
 });
 

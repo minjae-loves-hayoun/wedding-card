@@ -387,17 +387,30 @@ body {
   color: var(--color-sub);
 }
 
-.map-kakao-link {
-  display: block;
-  margin-top: 10px;
-  text-align: center;
-  font-size: 13px;
-  color: #3a1d96;
-  text-decoration: none;
-  letter-spacing: 0.5px;
+.map-app-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
 }
 
-.map-kakao-link:hover { text-decoration: underline; }
+.map-app-link {
+  flex: 1;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-sub);
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.map-app-link:hover {
+  border-color: var(--color-point);
+  color: var(--color-point);
+}
 
 .transport {
   text-align: left;
@@ -413,6 +426,9 @@ body {
 }
 
 .transport-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 14px;
   font-weight: 500;
   color: var(--color-point-dark);
