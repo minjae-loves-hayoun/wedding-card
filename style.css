@@ -387,19 +387,17 @@ body {
   color: var(--color-sub);
 }
 
-.map-btn-row {
-  background: var(--color-bg);
-  border-top: 1px solid var(--color-border);
-  padding: 12px 20px;
+.map-kakao-link {
+  display: block;
+  margin-top: 10px;
   text-align: center;
-}
-
-.map-btn {
   font-size: 13px;
-  color: #03c75a;
-  font-weight: 500;
+  color: #3a1d96;
+  text-decoration: none;
   letter-spacing: 0.5px;
 }
+
+.map-kakao-link:hover { text-decoration: underline; }
 
 .transport {
   text-align: left;

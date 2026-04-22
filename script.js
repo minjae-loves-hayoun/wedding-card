@@ -125,6 +125,31 @@ document.addEventListener('click', autoPlayBgm);
 document.addEventListener('touchstart', autoPlayBgm);
 document.addEventListener('scroll', autoPlayBgm, { passive: true });
 
+// ─── Kakao Map ───────────────────────────────────────────────────────────────
+function initKakaoMap() {
+  if (typeof kakao === 'undefined') return;
+  const container = document.getElementById('kakaoMap');
+  if (!container) return;
+
+  const coords = new kakao.maps.LatLng(37.42788, 126.80011);
+  const map = new kakao.maps.Map(container, { center: coords, level: 4 });
+
+  const marker = new kakao.maps.Marker({ position: coords });
+  marker.setMap(map);
+
+  const infowindow = new kakao.maps.InfoWindow({
+    content: '<div style="padding:6px 10px;font-size:13px;white-space:nowrap;">광명역사컨벤션웨딩홀</div>'
+  });
+  infowindow.open(map, marker);
+}
+
+// 카카오맵 SDK 로드 후 초기화
+if (typeof kakao !== 'undefined') {
+  initKakaoMap();
+} else {
+  window.addEventListener('load', initKakaoMap);
+}
+
 // ─── Scroll Reveal ───────────────────────────────────────────────────────────
 function initReveal() {
   const observer = new IntersectionObserver((entries) => {
