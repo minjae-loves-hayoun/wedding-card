@@ -7,7 +7,6 @@
   --color-sub: #888888;
   --color-border: #e8d8d0;
   --font-ko: 'Noto Serif KR', serif;
-  --font-num: 'Bodoni Moda', serif;
   --font-script: 'Great Vibes', cursive;
   --max-width: 480px;
 }
@@ -95,7 +94,7 @@ body {
 }
 
 .hero-date-label {
-  font-family: var(--font-num);
+  font-family: var(--font-ko);
   font-size: 15px;
   letter-spacing: 4px;
   color: var(--color-sub);
@@ -212,7 +211,7 @@ body {
 }
 
 .dday {
-  font-family: var(--font-num);
+  font-family: var(--font-ko);
   font-size: 13px;
   letter-spacing: 4px;
   color: var(--color-point);
@@ -221,7 +220,7 @@ body {
 }
 
 .date-main {
-  font-family: var(--font-num);
+  font-family: 'Caveat', cursive;
   font-size: 32px;
   font-weight: 500;
   letter-spacing: 2px;
@@ -503,7 +502,7 @@ body {
 
 .venue-phone {
   margin-top: 32px;
-  font-family: var(--font-num);
+  font-family: var(--font-ko);
   font-size: 14px;
   letter-spacing: 2px;
   color: var(--color-sub);
