@@ -14,7 +14,7 @@ function updateDday() {
   }
 
   const diffDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
-  el.textContent = diffDays === 0 ? 'D-DAY' : `D-${diffDays}`;
+  el.textContent = diffDays === 0 ? 'D-day' : `D-day / ${diffDays}`;
 }
 
 updateDday();

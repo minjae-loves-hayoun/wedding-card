@@ -212,8 +212,8 @@ body {
 
 .dday {
   font-family: 'Caveat', cursive;
-  font-size: 13px;
-  letter-spacing: 4px;
+  font-size: 32px;
+  letter-spacing: 2px;
   color: var(--color-point);
   margin-bottom: 16px;
   min-height: 20px;
