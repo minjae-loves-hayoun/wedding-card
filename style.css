@@ -557,7 +557,7 @@ body {
 
 .venue-phone {
   margin-top: 32px;
-  font-family: 'Caveat', cursive;
+  font-family: var(--font-ko);
   font-size: 14px;
   letter-spacing: 2px;
   color: var(--color-sub);
