@@ -44,42 +44,63 @@ function initGallery() {
 initGallery();
 
 // ─── Account Toggle & Clipboard ──────────────────────────────────────────────
-// 계좌번호 확정 시 여기만 수정
 const ACCOUNTS = {
-  groom:           { name: '우리은행  정민재', number: '1002-747-804723' },
-  'groom-parent1': { name: '국민은행  최향지', number: '93710101403763' },
-  'groom-parent2': { name: '국민은행  정귀석', number: '93710101403763' },
-  bride:           { name: '신한은행  김하윤', number: '110-440-092401' },
-  'bride-parent1': { name: '하나은행  김수만', number: '184-18-277544' },
-  'bride-parent2': { name: '광주은행  김안숙', number: '420-107-067637' },
+  groom: [
+    { name: '우리은행  정민재', number: '1002-747-804723' },
+    { name: '국민은행  최향지', number: '93710101403763' },
+    { name: '국민은행  정귀석', number: '93710101403763' },
+  ],
+  bride: [
+    { name: '신한은행  김하윤', number: '110-440-092401' },
+    { name: '하나은행  김수만', number: '184-18-277544' },
+    { name: '광주은행  김안숙', number: '420-107-067637' },
+  ],
 };
 
-function initAccounts() {
-  document.getElementById('groom-name').textContent = ACCOUNTS.groom.name;
-  document.getElementById('groom-number').textContent = ACCOUNTS.groom.number;
-  document.getElementById('groom-parent1-name').textContent = ACCOUNTS['groom-parent1'].name;
-  document.getElementById('groom-parent1-number').textContent = ACCOUNTS['groom-parent1'].number;
-  document.getElementById('groom-parent2-name').textContent = ACCOUNTS['groom-parent2'].name;
-  document.getElementById('groom-parent2-number').textContent = ACCOUNTS['groom-parent2'].number;
-  document.getElementById('bride-name').textContent = ACCOUNTS.bride.name;
-  document.getElementById('bride-number').textContent = ACCOUNTS.bride.number;
-  document.getElementById('bride-parent1-name').textContent = ACCOUNTS['bride-parent1'].name;
-  document.getElementById('bride-parent1-number').textContent = ACCOUNTS['bride-parent1'].number;
-  document.getElementById('bride-parent2-name').textContent = ACCOUNTS['bride-parent2'].name;
-  document.getElementById('bride-parent2-number').textContent = ACCOUNTS['bride-parent2'].number;
+function renderAccounts(side) {
+  const display = document.getElementById('account-display');
+  display.textContent = '';
+
+  ACCOUNTS[side].forEach((acct, i) => {
+    const row = document.createElement('div');
+    row.className = 'account-row';
+
+    const name = document.createElement('p');
+    name.className = 'account-name';
+    name.textContent = acct.name;
+
+    const btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.textContent = '복사';
+    btn.addEventListener('click', () => copyToClipboard(acct.number, btn));
+
+    row.appendChild(name);
+    row.appendChild(btn);
+    display.appendChild(row);
+
+    if (i < ACCOUNTS[side].length - 1) {
+      const sep = document.createElement('hr');
+      sep.className = 'account-sep';
+      display.appendChild(sep);
+    }
+  });
 }
+
+let currentSide = null;
 
 function toggleAccount(side) {
-  const el = document.getElementById(`account-${side}`);
-  const other = document.getElementById(`account-${side === 'groom' ? 'bride' : 'groom'}`);
-  const isHidden = el.classList.contains('hidden');
-  el.classList.toggle('hidden', !isHidden);
-  if (!other.classList.contains('hidden')) other.classList.add('hidden');
+  const display = document.getElementById('account-display');
+  if (currentSide === side && !display.classList.contains('hidden')) {
+    display.classList.add('hidden');
+    currentSide = null;
+    return;
+  }
+  renderAccounts(side);
+  currentSide = side;
+  display.classList.remove('hidden');
 }
 
-function copyAccount(side) {
-  const number = ACCOUNTS[side].number;
-  const btn = document.querySelector(`#account-${side} .copy-btn`);
+function copyToClipboard(number, btn) {
   navigator.clipboard.writeText(number).then(() => {
     btn.textContent = '복사됨 ✓';
     btn.style.color = 'var(--color-point)';
@@ -91,8 +112,6 @@ function copyAccount(side) {
     }, 2000);
   }).catch(() => {});
 }
-
-initAccounts();
 
 // ─── BGM ─────────────────────────────────────────────────────────────────────
 let bgmPlaying = false;

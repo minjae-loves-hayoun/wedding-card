@@ -347,17 +347,8 @@ body {
 }
 
 .account-name {
-  font-size: 13px;
-  color: var(--color-sub);
-  margin-bottom: 6px;
-}
-
-.account-number {
-  font-family: var(--font-en);
-  font-size: 18px;
+  font-size: 14px;
   color: var(--color-text);
-  letter-spacing: 2px;
-  margin-bottom: 12px;
 }
 
 .copy-btn {
@@ -379,7 +370,12 @@ body {
   margin: 14px 0;
 }
 
-.account-row { text-align: center; }
+.account-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+}
 
 /* ─── Location ───────────────────────────────────────────────────────────── */
 .map-wrap {
