@@ -46,8 +46,8 @@ initGallery();
 // ─── Account Toggle & Clipboard ──────────────────────────────────────────────
 // 계좌번호 확정 시 여기만 수정
 const ACCOUNTS = {
-  groom: { name: '신한 정민재', number: 'XXX-XXXX-XXXX' },
-  bride: { name: '국민 김하윤', number: 'XXX-XXXX-XXXX' },
+  groom: { name: '우리 정민재', number: '1002-747-804723' },
+  bride: { name: '신한 김하윤', number: '110-440-092401' },
 };
 
 function initAccounts() {
