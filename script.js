@@ -131,17 +131,25 @@ function initKakaoMap() {
   const container = document.getElementById('kakaoMap');
   if (!container) return;
 
-  // WCONGNAMUL → WGS84 변환 (카카오 place ID 23753350 정확한 좌표)
-  const wcCoords = new kakao.maps.Coords(455722, 1091302);
-  const latLng = wcCoords.toLatLng();
-
-  const map = new kakao.maps.Map(container, { center: latLng, level: 4 });
-
-  const marker = new kakao.maps.Marker({ position: latLng, map });
-  const infowindow = new kakao.maps.InfoWindow({
-    content: '<div style="padding:6px 10px;font-size:13px;white-space:nowrap;">광명역사컨벤션웨딩홀</div>'
+  const map = new kakao.maps.Map(container, {
+    center: new kakao.maps.LatLng(37.4279, 126.7999),
+    level: 4
   });
-  infowindow.open(map, marker);
+
+  // 주소로 정확한 좌표 변환
+  const geocoder = new kakao.maps.services.Geocoder();
+  geocoder.addressSearch('경기도 광명시 광명역로 21', function(result, status) {
+    if (status === kakao.maps.services.Status.OK) {
+      const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+      map.setCenter(coords);
+
+      const marker = new kakao.maps.Marker({ position: coords, map });
+      const infowindow = new kakao.maps.InfoWindow({
+        content: '<div style="padding:6px 10px;font-size:13px;white-space:nowrap;">광명역사컨벤션웨딩홀</div>'
+      });
+      infowindow.open(map, marker);
+    }
+  });
 }
 
 window.addEventListener('load', initKakaoMap);
