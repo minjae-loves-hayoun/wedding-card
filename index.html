@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>정민재 ♥ 김하윤 결혼합니다</title>
+  <meta property="og:title" content="정민재 ♥ 김하윤 결혼합니다">
+  <meta property="og:description" content="2026년 8월 22일 토요일 오전 11시 · 광명역사컨벤션웨딩홀">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ① Hero ---------------------------------------------------------------->
+  <section id="hero">
+    <div class="hero-bg">
+      <!-- 사진 있을 때: <img src="img/hero.jpg" alt="Hayoun & Minjae"> 추가 -->
+    </div>
+    <div class="hero-content">
+      <div class="hero-illust">
+        <img src="img/illust.png" alt="" onerror="this.style.display='none'">
+      </div>
+      <p class="hero-date-label">08.22 · 11AM</p>
+      <h1 class="hero-names">
+        <span class="en">Hayoun</span>
+        <span class="amp">&amp;</span>
+        <span class="en">Minjae</span>
+      </h1>
+      <p class="hero-venue">광명역사컨벤션웨딩홀</p>
+    </div>
+  </section>
+
+  <!-- ② Sticky Nav --------------------------------------------------------->
+  <nav id="nav" class="sticky-nav">
+    <a href="#hero">처음으로</a>
+    <span class="nav-divider">|</span>
+    <a href="#gallery">갤러리</a>
+    <span class="nav-divider">|</span>
+    <a href="#account">계좌번호</a>
+    <span class="nav-divider">|</span>
+    <a href="#location">찾아오는 길</a>
+  </nav>
+
+  <!-- ③ 초대 글 -------------------------------------------------------------->
+  <section id="invite" class="section reveal">
+    <div class="invite-deco">✿</div>
+    <div class="invite-parents">
+      <p>정귀석 · 최향지의 장남 <strong>정민재</strong></p>
+      <p>김수만 · 김안숙의 장녀 <strong>김하윤</strong></p>
+    </div>
+    <div class="divider"></div>
+    <p class="invite-text">
+      두 사람이 사랑으로 만나<br>
+      이제 하나의 가정을 이루려 합니다.<br><br>
+      새로운 출발을 함께 축복해 주시면<br>
+      더없는 기쁨이 되겠습니다.
+    </p>
+    <div class="divider"></div>
+    <div class="invite-deco">✿</div>
+  </section>
+
+  <!-- ④ 날짜 · D-day -------------------------------------------------------->
+  <section id="date" class="section section-date reveal">
+    <p id="dday" class="dday"></p>
+    <p class="date-main">2026. 08. 22</p>
+    <p class="date-sub">SATURDAY · 오전 11시</p>
+    <div class="divider"></div>
+    <p class="venue-name">광명역사컨벤션웨딩홀</p>
+    <p class="venue-detail">LA POET</p>
+    <p class="venue-addr">경기도 광명시 광명역로 21<br>KTX광명역 동편 B1</p>
+  </section>
+
+  <!-- ⑤ Photo Gallery ------------------------------------------------------>
+  <section id="gallery" class="section reveal">
+    <p class="section-label">PHOTO GALLERY</p>
+    <div class="gallery-track">
+      <!-- 사진 있을 때: placeholder div를 <img src="img/gallery-N.jpg" alt=""> 로 교체 -->
+      <div class="gallery-item placeholder"></div>
+      <div class="gallery-item placeholder"></div>
+      <div class="gallery-item placeholder"></div>
+      <div class="gallery-item placeholder"></div>
+      <div class="gallery-item placeholder"></div>
+    </div>
+    <div class="gallery-dots" id="galleryDots"></div>
+  </section>
+
+  <!-- ⑥ 계좌번호 ------------------------------------------------------------->
+  <section id="account" class="section reveal">
+    <div class="invite-deco">✿</div>
+    <p class="section-title">마음 전하실 곳</p>
+    <div class="divider"></div>
+    <div class="account-buttons">
+      <button class="account-btn" onclick="toggleAccount('groom')">신랑측 계좌번호</button>
+      <button class="account-btn" onclick="toggleAccount('bride')">신부측 계좌번호</button>
+    </div>
+    <div id="account-groom" class="account-info hidden">
+      <p class="account-name" id="groom-name"></p>
+      <p class="account-number" id="groom-number"></p>
+      <button class="copy-btn" onclick="copyAccount('groom')">복사</button>
+    </div>
+    <div id="account-bride" class="account-info hidden">
+      <p class="account-name" id="bride-name"></p>
+      <p class="account-number" id="bride-number"></p>
+      <button class="copy-btn" onclick="copyAccount('bride')">복사</button>
+    </div>
+  </section>
+
+  <!-- ⑦ 오시는 길 ------------------------------------------------------------>
+  <section id="location" class="section reveal">
+    <p class="section-label">LOCATION</p>
+    <p class="venue-name">광명역사컨벤션웨딩홀</p>
+    <p class="venue-addr" style="margin-bottom:24px;">경기도 광명시 광명역로 21 KTX광명역 동편 B1</p>
+
+    <div class="map-wrap">
+      <iframe
+        src="https://maps.google.com/maps?q=경기도+광명시+광명역로+21&output=embed&hl=ko"
+        width="100%"
+        height="280"
+        style="border:0;border-radius:8px;"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="오시는 길">
+      </iframe>
+    </div>
+
+    <div class="transport">
+      <div class="transport-item">
+        <p class="transport-title">🚇 지하철</p>
+        <p>광명역(1호선) 지하철 운행 (영등포 ↔ 광명역)</p>
+        <p>관악역(1호선) 1번 출구 (마을버스 1-1 운행)</p>
+      </div>
+      <div class="transport-item">
+        <p class="transport-title">🚌 버스</p>
+        <p>KTX 광명역 하차</p>
+        <p>셔틀버스 505</p>
+        <p>마을버스 1-1, 1-3, 88</p>
+        <p>일반버스 12, 17, 22, 75, 3, 8-2, 11-3, 50, 77, 102</p>
+        <p>간선버스(파랑) 505 · 지선버스(초록) 5633, 5627</p>
+        <p>광역버스 G8808 · 시외직행 3002, G9633 · 공항버스 6004</p>
+      </div>
+      <div class="transport-item">
+        <p class="transport-title">🚗 자가용</p>
+        <p><strong>제1주차장</strong> 센트럴자이 상가 주차장 B3층 (2시간 무료)</p>
+        <p style="color:var(--color-sub);font-size:12px;">네비: 광명 센트럴자이 오피스텔 입력</p>
+        <p style="margin-top:8px;"><strong>제2주차장</strong> 파크자이 상가 주차장 B2층 (2시간 무료)</p>
+        <p style="color:var(--color-sub);font-size:12px;">네비: 광명 파크자이 오피스텔 입력</p>
+      </div>
+    </div>
+
+    <p class="venue-phone">TEL 02.899.7400</p>
+  </section>
+
+  <!-- BGM + 버튼 ------------------------------------------------------------->
+  <audio id="bgm" loop>
+    <source src="audio/bgm.mp3" type="audio/mpeg">
+  </audio>
+
+  <button id="bgmBtn" class="bgm-btn" onclick="toggleBgm()" aria-label="배경음악 켜기/끄기">
+    <span id="bgmIcon">♪</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
