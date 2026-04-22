@@ -131,26 +131,17 @@ function initKakaoMap() {
   const container = document.getElementById('kakaoMap');
   if (!container) return;
 
-  const map = new kakao.maps.Map(container, {
-    center: new kakao.maps.LatLng(37.4279, 126.7999),
-    level: 4
-  });
+  // WCONGNAMUL → WGS84 변환 (카카오 place ID 23753350 정확한 좌표)
+  const wcCoords = new kakao.maps.Coords(455722, 1091302);
+  const latLng = wcCoords.toLatLng();
 
-  // Places 검색으로 정확한 위치에 마커 표시
-  const ps = new kakao.maps.services.Places();
-  ps.keywordSearch('광명역사컨벤션웨딩홀', function(data, status) {
-    if (status === kakao.maps.services.Status.OK && data.length > 0) {
-      const place = data[0];
-      const coords = new kakao.maps.LatLng(place.y, place.x);
-      map.setCenter(coords);
+  const map = new kakao.maps.Map(container, { center: latLng, level: 4 });
 
-      const marker = new kakao.maps.Marker({ position: coords, map });
-      const infowindow = new kakao.maps.InfoWindow({
-        content: '<div style="padding:6px 10px;font-size:13px;white-space:nowrap;">광명역사컨벤션웨딩홀</div>'
-      });
-      infowindow.open(map, marker);
-    }
+  const marker = new kakao.maps.Marker({ position: latLng, map });
+  const infowindow = new kakao.maps.InfoWindow({
+    content: '<div style="padding:6px 10px;font-size:13px;white-space:nowrap;">광명역사컨벤션웨딩홀</div>'
   });
+  infowindow.open(map, marker);
 }
 
 window.addEventListener('load', initKakaoMap);
