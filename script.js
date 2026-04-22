@@ -45,13 +45,13 @@ initGallery();
 
 // ─── Account Toggle & Clipboard ──────────────────────────────────────────────
 const ACCOUNTS = {
-  groom: [
-    { bank: '우리은행', person: '정민재', number: '1002-747-804723' },
+  groom:        [{ bank: '우리은행', person: '정민재', number: '1002-747-804723' }],
+  bride:        [{ bank: '신한은행', person: '김하윤', number: '110-440-092401' }],
+  groomParents: [
     { bank: '국민은행', person: '최향지', number: '937101-01-403763' },
     { bank: '국민은행', person: '정귀석', number: '937101-01-403763' },
   ],
-  bride: [
-    { bank: '신한은행', person: '김하윤', number: '110-440-092401' },
+  brideParents: [
     { bank: '하나은행', person: '김수만', number: '184-18-277544' },
     { bank: '광주은행', person: '김안숙', number: '420-107-067637' },
   ],
