@@ -8,7 +8,7 @@
   --color-border: #e8d8d0;
   --font-ko: 'Noto Serif KR', serif;
   --font-en: 'Cormorant Garamond', serif;
-  --font-script: 'Great Vibes', cursive;
+  --font-script: 'Pinyon Script', cursive;
   --max-width: 480px;
 }
 
@@ -112,7 +112,8 @@ body {
 }
 
 .hero-names .amp {
-  display: block;
+  display: flex;
+  justify-content: center;
   color: var(--color-point);
   margin: 14px 0;
 }
