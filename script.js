@@ -88,6 +88,9 @@ function toggleBgm() {
   const audio = document.getElementById('bgm');
   if (!audio || audio.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) return;
 
+  autoPlayDone = true;
+  removeAutoPlayListeners();
+
   if (bgmPlaying) {
     audio.pause();
     setBgmState(false);
@@ -100,12 +103,16 @@ function toggleBgm() {
 // 첫 번째 사용자 인터랙션 시 자동 재생 (한 번만 실행)
 let autoPlayDone = false;
 
-function autoPlayBgm() {
-  if (autoPlayDone) return;
-  autoPlayDone = true;
+function removeAutoPlayListeners() {
   document.removeEventListener('click', autoPlayBgm);
   document.removeEventListener('touchstart', autoPlayBgm);
   document.removeEventListener('scroll', autoPlayBgm);
+}
+
+function autoPlayBgm() {
+  if (autoPlayDone) return;
+  autoPlayDone = true;
+  removeAutoPlayListeners();
 
   const audio = document.getElementById('bgm');
   if (!audio) return;
