@@ -46,14 +46,14 @@ initGallery();
 // ─── Account Toggle & Clipboard ──────────────────────────────────────────────
 const ACCOUNTS = {
   groom: [
-    { name: '우리은행  정민재', number: '1002-747-804723' },
-    { name: '국민은행  최향지', number: '93710101403763' },
-    { name: '국민은행  정귀석', number: '93710101403763' },
+    { bank: '우리은행', person: '정민재', number: '1002-747-804723' },
+    { bank: '국민은행', person: '최향지', number: '93710101403763' },
+    { bank: '국민은행', person: '정귀석', number: '93710101403763' },
   ],
   bride: [
-    { name: '신한은행  김하윤', number: '110-440-092401' },
-    { name: '하나은행  김수만', number: '184-18-277544' },
-    { name: '광주은행  김안숙', number: '420-107-067637' },
+    { bank: '신한은행', person: '김하윤', number: '110-440-092401' },
+    { bank: '하나은행', person: '김수만', number: '184-18-277544' },
+    { bank: '광주은행', person: '김안숙', number: '420-107-067637' },
   ],
 };
 
@@ -67,12 +67,13 @@ function renderAccounts(side) {
 
     const name = document.createElement('p');
     name.className = 'account-name';
-    name.textContent = acct.name;
+    name.textContent = `${acct.bank}  ${acct.person}`;
 
+    const copyText = `${acct.bank.replace('은행', '')} ${acct.number}`;
     const btn = document.createElement('button');
     btn.className = 'copy-btn';
     btn.textContent = '복사';
-    btn.addEventListener('click', () => copyToClipboard(acct.number, btn));
+    btn.addEventListener('click', () => copyToClipboard(copyText, btn));
 
     row.appendChild(name);
     row.appendChild(btn);
