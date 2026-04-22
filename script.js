@@ -97,16 +97,21 @@ function toggleBgm() {
   }
 }
 
-// 첫 번째 사용자 인터랙션 시 자동 재생
+// 첫 번째 사용자 인터랙션 시 자동 재생 (한 번만 실행)
+let autoPlayDone = false;
+
 function autoPlayBgm() {
-  const audio = document.getElementById('bgm');
-  if (!audio || bgmPlaying) return;
-  audio.play().then(() => {
-    setBgmState(true);
-  }).catch(() => {});
+  if (autoPlayDone) return;
+  autoPlayDone = true;
   document.removeEventListener('click', autoPlayBgm);
   document.removeEventListener('touchstart', autoPlayBgm);
   document.removeEventListener('scroll', autoPlayBgm);
+
+  const audio = document.getElementById('bgm');
+  if (!audio) return;
+  audio.play().then(() => {
+    setBgmState(true);
+  }).catch(() => {});
 }
 
 document.addEventListener('click', autoPlayBgm);
