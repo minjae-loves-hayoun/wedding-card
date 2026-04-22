@@ -45,34 +45,41 @@ initGallery();
 
 // ─── Account Toggle & Clipboard ──────────────────────────────────────────────
 const ACCOUNTS = {
-  groom:        { label: '신랑', list: [{ bank: '우리은행', person: '정민재', number: '1002-747-804723' }] },
-  bride:        { label: '신부', list: [{ bank: '신한은행', person: '김하윤', number: '110-440-092401' }] },
-  groomParents: { label: '신랑 혼주', list: [
-    { bank: '국민은행', person: '최향지', number: '937101-01-403763' },
-    { bank: '국민은행', person: '정귀석', number: '937101-01-403763' },
-  ]},
-  brideParents: { label: '신부 혼주', list: [
-    { bank: '하나은행', person: '김수만', number: '184-18-277544' },
-    { bank: '광주은행', person: '김안숙', number: '420-107-067637' },
-  ]},
+  groom: [
+    { label: '신랑', list: [
+      { bank: '우리은행', person: '정민재', number: '1002-747-804723' },
+    ]},
+    { label: '신랑 혼주', list: [
+      { bank: '국민은행', person: '최향지', number: '937101-01-403763' },
+      { bank: '국민은행', person: '정귀석', number: '937101-01-403763' },
+    ]},
+  ],
+  bride: [
+    { label: '신부', list: [
+      { bank: '신한은행', person: '김하윤', number: '110-440-092401' },
+    ]},
+    { label: '신부 혼주', list: [
+      { bank: '하나은행', person: '김수만', number: '184-18-277544' },
+      { bank: '광주은행', person: '김안숙', number: '420-107-067637' },
+    ]},
+  ],
 };
 
 function renderAccounts(side) {
   const display = document.getElementById('account-display');
   display.textContent = '';
 
-  const title = document.createElement('p');
-  title.className = 'account-label';
-  title.textContent = ACCOUNTS[side].label;
-  display.appendChild(title);
+  const rows = ACCOUNTS[side].flatMap(group =>
+    group.list.map(acct => ({ label: group.label, ...acct }))
+  );
 
-  ACCOUNTS[side].list.forEach((acct, i) => {
+  rows.forEach((acct, i) => {
     const row = document.createElement('div');
     row.className = 'account-row';
 
     const name = document.createElement('p');
     name.className = 'account-name';
-    name.textContent = acct.person;
+    name.textContent = `${acct.label} ${acct.person}`;
 
     const copyText = `${acct.bank.replace('은행', '')} ${acct.number}`;
     const btn = document.createElement('button');
@@ -84,7 +91,7 @@ function renderAccounts(side) {
     row.appendChild(btn);
     display.appendChild(row);
 
-    if (i < ACCOUNTS[side].list.length - 1) {
+    if (i < rows.length - 1) {
       const sep = document.createElement('hr');
       sep.className = 'account-sep';
       display.appendChild(sep);
