@@ -67,7 +67,7 @@ function renderAccounts(side) {
 
     const name = document.createElement('p');
     name.className = 'account-name';
-    name.textContent = `${acct.bank}  ${acct.person}`;
+    name.textContent = acct.person;
 
     const copyText = `${acct.bank.replace('은행', '')} ${acct.number}`;
     const btn = document.createElement('button');
