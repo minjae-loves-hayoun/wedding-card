@@ -67,11 +67,17 @@ function toggleAccount(side) {
 
 function copyAccount(side) {
   const number = ACCOUNTS[side].number;
+  const btn = document.querySelector(`#account-${side} .copy-btn`);
   navigator.clipboard.writeText(number).then(() => {
-    alert('계좌번호가 복사되었습니다.');
-  }).catch(() => {
-    // file:// 환경 등 HTTPS 외에서는 조용히 실패
-  });
+    btn.textContent = '복사됨 ✓';
+    btn.style.color = 'var(--color-point)';
+    btn.style.borderColor = 'var(--color-point)';
+    setTimeout(() => {
+      btn.textContent = '복사';
+      btn.style.color = '';
+      btn.style.borderColor = '';
+    }, 2000);
+  }).catch(() => {});
 }
 
 initAccounts();
@@ -190,3 +196,11 @@ function initReveal() {
 }
 
 initReveal();
+
+// ─── Scroll Indicator ────────────────────────────────────────────────────────
+const scrollIndicator = document.querySelector('.scroll-indicator');
+if (scrollIndicator) {
+  window.addEventListener('scroll', () => {
+    scrollIndicator.style.opacity = window.scrollY > 80 ? '0' : '0.5';
+  }, { passive: true });
+}

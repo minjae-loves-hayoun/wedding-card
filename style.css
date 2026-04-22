@@ -29,11 +29,16 @@ body {
 }
 
 .divider {
-  width: 40px;
+  width: 0;
   height: 1px;
   background: var(--color-point);
   margin: 24px auto;
   opacity: 0.5;
+  transition: width 0.7s ease 0.3s;
+}
+
+.reveal.visible .divider {
+  width: 40px;
 }
 
 .section-label {
@@ -124,6 +129,21 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.25); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
 /* ─── Sticky Nav ─────────────────────────────────────────────────────────── */
 .sticky-nav {
   position: sticky;
@@ -157,9 +177,11 @@ body {
 
 /* ─── Invite ─────────────────────────────────────────────────────────────── */
 .invite-deco {
+  display: inline-block;
   font-size: 20px;
   color: var(--color-point);
   margin: 8px 0;
+  animation: heartbeat 2.4s ease-in-out infinite;
 }
 
 .invite-parents {
@@ -478,6 +500,25 @@ body {
 
 .bgm-btn:hover { transform: scale(1.1); }
 .bgm-btn.playing { color: var(--color-point-dark); }
+
+.bgm-btn.playing #bgmIcon {
+  display: inline-block;
+  animation: spin 3s linear infinite;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  font-size: 16px;
+  color: var(--color-sub);
+  opacity: 0.5;
+  animation: bounce 2s ease-in-out infinite;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
 
 /* ─── Scroll Reveal ──────────────────────────────────────────────────────── */
 .reveal {
