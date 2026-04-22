@@ -76,24 +76,42 @@ initAccounts();
 // ─── BGM ─────────────────────────────────────────────────────────────────────
 let bgmPlaying = false;
 
-function toggleBgm() {
-  const audio = document.getElementById('bgm');
+function setBgmState(playing) {
   const btn = document.getElementById('bgmBtn');
   const icon = document.getElementById('bgmIcon');
+  bgmPlaying = playing;
+  btn.classList.toggle('playing', playing);
+  icon.textContent = playing ? '♬' : '♪';
+}
 
+function toggleBgm() {
+  const audio = document.getElementById('bgm');
   if (!audio || audio.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) return;
 
   if (bgmPlaying) {
     audio.pause();
-    btn.classList.remove('playing');
-    icon.textContent = '♪';
+    setBgmState(false);
   } else {
     audio.play().catch(() => {});
-    btn.classList.add('playing');
-    icon.textContent = '♬';
+    setBgmState(true);
   }
-  bgmPlaying = !bgmPlaying;
 }
+
+// 첫 번째 사용자 인터랙션 시 자동 재생
+function autoPlayBgm() {
+  const audio = document.getElementById('bgm');
+  if (!audio || bgmPlaying) return;
+  audio.play().then(() => {
+    setBgmState(true);
+  }).catch(() => {});
+  document.removeEventListener('click', autoPlayBgm);
+  document.removeEventListener('touchstart', autoPlayBgm);
+  document.removeEventListener('scroll', autoPlayBgm);
+}
+
+document.addEventListener('click', autoPlayBgm);
+document.addEventListener('touchstart', autoPlayBgm);
+document.addEventListener('scroll', autoPlayBgm, { passive: true });
 
 // ─── Scroll Reveal ───────────────────────────────────────────────────────────
 function initReveal() {
