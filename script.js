@@ -174,19 +174,39 @@ function autoPlayBgm() {
   }).catch(() => {});
 }
 
-// 페이지 로드 시 자동재생 시도 (브라우저가 허용하면 즉시 재생)
+// 페이지 로드 시 자동재생 시도
 window.addEventListener('load', function() {
   const audio = document.getElementById('bgm');
   if (!audio) return;
+
+  // 1단계: 일반 자동재생 시도
   audio.play().then(() => {
     autoPlayDone = true;
     removeAutoPlayListeners();
     setBgmState(true);
   }).catch(() => {
-    // 브라우저가 차단한 경우 첫 클릭/터치 시 재생
-    document.getElementById('bgmBtn').classList.add('idle');
-    document.addEventListener('click', autoPlayBgm);
-    document.addEventListener('touchstart', autoPlayBgm);
+    // 2단계: 음소거 자동재생 (Chrome 허용) → 첫 클릭 시 음소거 해제
+    audio.muted = true;
+    audio.play().then(() => {
+      document.getElementById('bgmBtn').classList.add('idle');
+
+      function unmute() {
+        audio.muted = false;
+        autoPlayDone = true;
+        removeAutoPlayListeners();
+        setBgmState(true);
+        document.removeEventListener('click', unmute);
+        document.removeEventListener('touchstart', unmute);
+      }
+
+      document.addEventListener('click', unmute);
+      document.addEventListener('touchstart', unmute);
+    }).catch(() => {
+      // 3단계: 완전 수동 폴백
+      document.getElementById('bgmBtn').classList.add('idle');
+      document.addEventListener('click', autoPlayBgm);
+      document.addEventListener('touchstart', autoPlayBgm);
+    });
   });
 });
 
