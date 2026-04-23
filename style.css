@@ -589,6 +589,15 @@ body {
 .bgm-btn:hover { transform: scale(1.1); }
 .bgm-btn.playing { color: var(--color-point-dark); }
 
+.bgm-btn.idle {
+  animation: bgmPulse 2s ease-in-out infinite;
+}
+
+@keyframes bgmPulse {
+  0%, 100% { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  50% { box-shadow: 0 0 0 6px rgba(201,160,160,0.25); }
+}
+
 .bgm-btn.playing #bgmIcon {
   display: inline-block;
   animation: spin 3s linear infinite;

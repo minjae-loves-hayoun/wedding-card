@@ -134,6 +134,7 @@ function setBgmState(playing) {
   const icon = document.getElementById('bgmIcon');
   bgmPlaying = playing;
   btn.classList.toggle('playing', playing);
+  btn.classList.toggle('idle', !playing);
   icon.textContent = playing ? '♬' : '♪';
 }
 
@@ -159,7 +160,6 @@ let autoPlayDone = false;
 function removeAutoPlayListeners() {
   document.removeEventListener('click', autoPlayBgm);
   document.removeEventListener('touchstart', autoPlayBgm);
-  document.removeEventListener('scroll', autoPlayBgm);
 }
 
 function autoPlayBgm() {
@@ -183,10 +183,10 @@ window.addEventListener('load', function() {
     removeAutoPlayListeners();
     setBgmState(true);
   }).catch(() => {
-    // 브라우저가 차단한 경우 첫 인터랙션 시 재생
+    // 브라우저가 차단한 경우 첫 클릭/터치 시 재생
+    document.getElementById('bgmBtn').classList.add('idle');
     document.addEventListener('click', autoPlayBgm);
     document.addEventListener('touchstart', autoPlayBgm);
-    document.addEventListener('scroll', autoPlayBgm, { passive: true });
   });
 });
 
