@@ -160,6 +160,7 @@ let autoPlayDone = false;
 function removeAutoPlayListeners() {
   document.removeEventListener('click', autoPlayBgm);
   document.removeEventListener('touchstart', autoPlayBgm);
+  document.removeEventListener('touchend', autoPlayBgm);
 }
 
 function autoPlayBgm() {
@@ -179,34 +180,15 @@ window.addEventListener('load', function() {
   const audio = document.getElementById('bgm');
   if (!audio) return;
 
-  // 1단계: 일반 자동재생 시도
   audio.play().then(() => {
     autoPlayDone = true;
     removeAutoPlayListeners();
     setBgmState(true);
   }).catch(() => {
-    // 2단계: 음소거 자동재생 (Chrome 허용) → 첫 클릭 시 음소거 해제
-    audio.muted = true;
-    audio.play().then(() => {
-      document.getElementById('bgmBtn').classList.add('idle');
-
-      function unmute() {
-        audio.muted = false;
-        autoPlayDone = true;
-        removeAutoPlayListeners();
-        setBgmState(true);
-        document.removeEventListener('click', unmute);
-        document.removeEventListener('touchstart', unmute);
-      }
-
-      document.addEventListener('click', unmute);
-      document.addEventListener('touchstart', unmute);
-    }).catch(() => {
-      // 3단계: 완전 수동 폴백
-      document.getElementById('bgmBtn').classList.add('idle');
-      document.addEventListener('click', autoPlayBgm);
-      document.addEventListener('touchstart', autoPlayBgm);
-    });
+    // 모바일: touchend(스크롤 포함), 데스크탑: click
+    document.getElementById('bgmBtn').classList.add('idle');
+    document.addEventListener('click', autoPlayBgm);
+    document.addEventListener('touchend', autoPlayBgm);
   });
 });
 
